@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHD 2024</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+    <nav id="sutd-nav">
+        <div class="sutd-nav-links">
+            <a href="https://www.sutd.edu.sg/" target="_blank">SUTD</a>
+            <span>|</span>
+            <a href="/">IHD 2024</a>
+        </div>
+    </nav>
+
+    <!-- Old: Hover Display -->
+    <!-- <nav id="desktop-nav">
+        <div class="logo">Program</div>
+        <ul class="desktop-nav-links">
+            <li><a href="#about">(Template) 01.101 Global Healthcare Technologies (SMT)</a></li>
+            <li><a href="#experience">(Template) 01.116 AI for Healthcare (ISTD / SMT)</a></li>
+            <li><a href="#projects">(Template) 30.123 Healthcare Product Design (EPD)</a></li>
+        </ul>
+    </nav> -->
+
+    <!-- New: Drop Down Menu Display -->
+    <nav id="desktop-nav">
+        <div class="desktop-nav-container">
+            <button 
+                class="program-button" 
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="program-menu"
+            >
+                Program
+            </button>
+            <ul 
+                id="program-menu" 
+                class="program-menu" 
+                role="menu"
+            >
+                <li role="menuitem">
+                    <a href="#/01101">(Template) 01.101 Global Healthcare Technologies (SMT)</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/01116">(Template) 01.116 AI for Healthcare (ISTD / SMT)</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/30123">(Template) 30.123 Healthcare Product Design (EPD)</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="welcome-note">
+        <div class="section__pic-container">
+            <img src="assets/testImage.png" alt="IHD 2024 Header Image" class="ihd-2024-header-img">
+        </div>
+        <div class="section__text-container">
+            <div class="welcome__note__contents">
+            
+                <h1>Welcome to IHD 2024 Virtual Exhibition</h1>
+                
+                <p class="section__text__p1">(Template) Innovations in Healthcare Design (IHD) 2024 is an annual joint showcase of our students' healthcare efforts across the various pillars/clusters in the below Healthcare courses, namely:</p>
+                
+                <ul>
+                    <li>(Template) 01.101 Global Healthcare Technologies (SMT)</li>
+                    <li>(Template) 01.116 AI for Healthcare (ISTD / SMT)</li>
+                    <li>(Template) 30.123 Healthcare Product Design (EPD)</li>
+                </ul>
+                
+                <p class="section__text__p1">(Template) Over the course of a term, students have teamed up with practicing clinicians and professionals from various healthcare partners across Singapore to deliver innovative healthcare design solutions to current unmet clinical needs.</p>
+                
+                <p class="section__text__p1">(Template) Join us (virtually) to witness their design ideas and discover the design process that ultimately resulted in the realization of these innovative design solutions.</p>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

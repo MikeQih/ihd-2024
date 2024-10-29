@@ -1,0 +1,55 @@
+/* 大屏幕设备 (1200px 及以上) */
+@media screen and (min-width: 1200px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* 平板和小型笔记本 (768px - 1199px) */
+@media screen and (max-width: 1199px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* 手机设备 (767px 及以下) */
+@media screen and (max-width: 767px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero {
+        margin-bottom: 20px;
+    }
+    
+    .header-img {
+        margin-bottom: 20px;
+    }
+}
+
+/* 小型手机设备 (480px 及以下) */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        font-size: 0.9rem;
+    }
+    
+    li {
+        font-size: 0.9rem;
+    }
+}
