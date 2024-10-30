@@ -232,15 +232,30 @@ li {
 
 
 /* COURSE SECTION */
-.courses-container {
+/* #course-section {
+    flex: 1;
+    position: relative;
+    padding-bottom: 500px;
+} */
+
+.course-container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
+    z-index: 2;
 }
 
 .course-card {
-    position: relative;
-    margin-bottom: 2rem;
+    position: relative; 
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.course-banner {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .course-info {
@@ -274,7 +289,7 @@ li {
     color: rgb(96, 183, 183);
 }
 
-.project-preview {
+.course-details {
     position: absolute;
     top: 100%;
     left: 0;
@@ -298,11 +313,16 @@ li {
     transform: scale(1.05);
 }
 
-.course-card:hover .project-preview {
+.course-card:hover .course-details {
     opacity: 1;
     visibility: visible;
     transform: translateY(10px);
 }
+
+.course-card:hover .course-details {
+    max-height: 500px; /* 根据内容调整适当的高度 */
+}
+
 
 .project-grid {
     display: grid;
@@ -325,7 +345,6 @@ li {
 
 
 /* footer */
-
 #footer {
     height: 26vh;
     margin: 0 1rem;
