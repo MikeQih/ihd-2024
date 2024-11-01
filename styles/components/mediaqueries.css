@@ -2,6 +2,8 @@
 @media screen and (min-width: 1200px) {
     .container {
         padding: 0 20px;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 }
 
@@ -22,9 +24,8 @@
         padding: 0 10px;
     }
     
-    h1 {
-        font-size: 1.8rem;
-    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
     
     .hero {
         margin-bottom: 20px;
@@ -32,6 +33,19 @@
     
     .header-img {
         margin-bottom: 20px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .course-content {
+        margin-left: 0 !important;
     }
 
 }
@@ -66,4 +80,9 @@
     .program-button::after {
         margin-left: 0; /* 移除箭头左边距 */
     }
+
+    .sidebar {
+        width: 200px;
+    }
+    
 }
