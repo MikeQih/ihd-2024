@@ -13,15 +13,25 @@ body {
 
 /* SUTD NAV */
 .sutd-nav-links {
-    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+    padding: 0 20px;
+    background-color: white;
     gap: 1rem;
     align-items: center;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .sutd-nav-links a {
     text-decoration: none;
     color: black;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .sutd-nav-links a:hover {
@@ -38,6 +48,7 @@ body {
 .desktop-nav-container {
     position: relative;
     display: inline-block;
+    margin-top: 3rem;
 }
 
 .program-button {
@@ -314,9 +325,11 @@ li {
 .project-link {
     display: block;
     transition: transform 0.3s ease;
+    opacity: 0.4;
 }
 
 .project-link:hover {
+    opacity: 1;
     transform: scale(1.05);
 }
 
