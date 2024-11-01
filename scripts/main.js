@@ -21,5 +21,4 @@ function toggleProgramMenu() {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     toggleProgramMenu();
-    // Other Functions
 });
