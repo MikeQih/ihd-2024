@@ -48,6 +48,23 @@
         margin-left: 0 !important;
     }
 
+    .program-text {
+        display: none; /* 隐藏文字 */
+    }
+    
+    .program-button {
+        padding: 0.5rem; /* 减小内边距 */
+        font-size: 1.2rem; /* 稍微减小箭头大小 */
+    }
+    
+    .program-button::after {
+        margin-left: 0; /* 移除箭头左边距 */
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
 }
 
 /* Small mobile devices (480px and below) */
