@@ -12,6 +12,7 @@ class CoursePageManager {
         this.handleInitialState();
         this.setupEventListeners();
         this.handleResponsiveState();
+        this.setupCourseButtons();
     }
     
     handleInitialState() {
@@ -43,6 +44,63 @@ class CoursePageManager {
             
         // 页面加载完成后检查
         window.addEventListener('load', () => this.handleResponsiveState());
+    }
+
+    setupCourseButtons() {
+        document.querySelectorAll('.course-button').forEach(button => {
+            // 处理课程链接点击
+            const courseLink = button.querySelector('.course-link');
+            if (courseLink) {
+                courseLink.addEventListener('click', (e) => {
+                    // 如果是当前页面的链接，阻止默认行为
+                    if (courseLink.getAttribute('href') === window.location.pathname.split('/').pop()) {
+                        e.preventDefault();
+                    }
+                });
+            }
+    
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                const projectList = document.getElementById(button.getAttribute('aria-controls'));
+                
+                // 关闭其他展开的项目列表
+                // document.querySelectorAll('.course-button').forEach(otherButton => {
+                //     if (otherButton !== button && otherButton.getAttribute('aria-expanded') === 'true') {
+                //         otherButton.setAttribute('aria-expanded', 'false');
+                //         const otherList = document.getElementById(otherButton.getAttribute('aria-controls'));
+                //         otherList.classList.remove('expanded');
+                //     }
+                // });
+    
+                // 切换当前项目列表
+                // button.setAttribute('aria-expanded', !isExpanded);
+                // projectList.classList.toggle('expanded');
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                if (projectList) {
+                    projectList.classList.toggle('expanded');
+                }
+            });
+        });
+    
+        // 根据当前URL设置active状态
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage) {
+            const targetLink = document.querySelector(`.course-link[href="${currentPage}"]`);
+            if (targetLink) {
+                const courseItem = targetLink.closest('li');
+                if (courseItem) {
+                    // 只将当前课程设为active
+                    courseItem.classList.add('active');
+                    const projectList = courseItem.querySelector('.project-list');
+                    const button = courseItem.querySelector('.course-button');
+                    if (projectList && button) {
+                        projectList.classList.add('expanded');
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                }
+            }
+        }
     }
     
     toggleSidebar() {
