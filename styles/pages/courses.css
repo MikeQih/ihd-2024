@@ -214,7 +214,7 @@ body {
 }
 
 .course-button::after {
-    content: '▲';
+    content: '▼';
     font-size: 0.8em;
     transition: transform 0.3s ease;
 }

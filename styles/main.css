@@ -62,6 +62,10 @@ body {
     gap: 0.5rem;
 }
 
+.program-button:hover {
+    transform: scale(1.1);
+}
+
 .program-button::after {
     content: '▼';
     font-size: 0.8em;
@@ -192,6 +196,7 @@ section {
 }
 
 .section__text__p1 {
+    font-size: 1.3rem; 
     text-align: center;
 }
 
@@ -204,12 +209,16 @@ section {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: #333;
     margin-bottom: 20px;
     text-shadow: 2px 3px 5px rgba(0, 0, 0, .15);
 }
 
+ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
 
 p {
     color: #666;
@@ -250,13 +259,17 @@ li {
 } */
 
 .course-container {
-    max-width: 1200px;
-    margin: 2rem auto;
+    /* max-width: 1200px; */
+    max-width: 100%;
+    /* margin: 2rem auto; */
+    margin: 0%;
     padding: 0 1rem;
+    /* padding: 0%; */
 }
 
 .course-card {
     position: relative; 
+    width: 100%;
     margin-bottom: 1rem;
     background: white;
     border-radius: 8px;
@@ -269,7 +282,7 @@ li {
     padding: 2rem;
     background-color: rgb(242, 253, 253);
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
@@ -451,4 +464,8 @@ footer a {
     display: block;
     padding: 0.5rem;
     transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: rgb(136, 223, 223);
 }
