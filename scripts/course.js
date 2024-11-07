@@ -60,7 +60,20 @@ class CoursePageManager {
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
         const projectList = document.getElementById(button.getAttribute('aria-controls'));
                 
-        // 切换状态
+        if (!isExpanded) {
+            // close all other expand
+            document.querySelectorAll('.course-button').forEach(otherButton => {
+                if (otherButton !== button) {  // except for current button
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    const otherList = document.getElementById(otherButton.getAttribute('aria-controls'));
+                    if (otherList) {
+                        otherList.classList.remove('expanded');
+                    }
+                }
+            });
+        }
+
+        // open current button
         button.setAttribute('aria-expanded', !isExpanded);
         if (projectList) {
             if (isExpanded) {
@@ -89,7 +102,6 @@ class CoursePageManager {
             }
         }
     }
-
 
     setupCourseButtons() {
         // 先关闭所有项目列表
