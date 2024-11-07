@@ -87,20 +87,23 @@ class ProjectPageManager {
     setInitialCourseState() {
         // 获取当前URL路径
         const path = window.location.pathname;
-        
         // 检查是否是项目页面
         const isProjectPage = path.includes('project');
         
         if (isProjectPage) {
             // 从路径中提取课程ID (例如从 'project1_01101.html' 提取 '01101')
-            const courseMatch = path.match(/(\d+)\.html$/);
+            const courseMatch = path.match(/\/(\d+)\/project\d+_\1\.html$/);
             const courseId = courseMatch ? courseMatch[1] : null;
             
             if (courseId) {
+                document.querySelectorAll('.course-button.active').forEach(button => {
+                    button.classList.remove('active');
+                });
+
                 // 找到对应的课程按钮
                 const courseButton = document.querySelector(`[aria-controls="projects-${courseId}"]`);
                 if (courseButton) {
-                    // 展开课程
+                    courseButton.classList.add('active');
                     courseButton.setAttribute('aria-expanded', 'true');
                     const projectList = document.getElementById(`projects-${courseId}`);
                     if (projectList) {
@@ -108,10 +111,10 @@ class ProjectPageManager {
                     }
                     
                     // 标记课程为激活状态
-                    const courseItem = courseButton.closest('li');
-                    if (courseItem) {
-                        courseItem.classList.add('active');
-                    }
+                    // const courseItem = courseButton.closest('li');
+                    // if (courseItem) {
+                    //     courseItem.classList.add('active');
+                    // }
                     
                     // 获取项目编号 (例如从 'project1_01101.html' 提取 '1')
                     const projectMatch = path.match(/project(\d+)_/);
@@ -178,7 +181,10 @@ class ProjectPageManager {
 
     getCurrentCourseId() {
         const path = window.location.pathname;
-        const match = path.match(/(\d+)/);
+        // const match = path.match(/(\d+)/);
+        // const match = path.match(/project\d+_(\d+)\.html$/);
+        const match = path.match(/\/(\d+)\/project\d+_\1\.html$/);
+
         return match ? match[1] : null;
     }
     
