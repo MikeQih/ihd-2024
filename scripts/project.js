@@ -211,12 +211,30 @@ class ProjectPageManager {
         const isMobile = window.innerWidth <= this.mobileBreakpoint;
         
         if (isMobile) {
+            // 移动端状态
             this.sidebar.classList.add('collapsed');
-            this.content.style.marginLeft = '0';
+            this.content.style.marginLeft = '60px'; // 改为固定的 60px 而不是 0
+            
+            // 确保标题和箭头正确显示
+            if (this.programmeTitle) {
+                this.programmeTitle.style.display = 'none'; // 隐藏文字
+            }
+            if (this.toggle) {
+                this.toggle.style.display = 'block'; // 确保箭头显示
+            }
         } else {
+            // 桌面端状态
             const wasCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
             this.content.style.marginLeft = wasCollapsed ? '60px' : '300px';
             this.sidebar.classList.toggle('collapsed', wasCollapsed);
+            
+            // 恢复标题和箭头的显示
+            if (this.programmeTitle) {
+                this.programmeTitle.style.display = ''; // 恢复默认显示
+            }
+            if (this.toggle) {
+                this.toggle.style.display = ''; // 恢复默认显示
+            }
         }
     }
 

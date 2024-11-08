@@ -157,6 +157,7 @@ body {
     color: rgb(136, 223, 223);
 }
 
+
 /* 再改 */
 /* .sidebar-menu .active a {
     background: #f0f0f0;
@@ -347,12 +348,30 @@ body {
 
 
 /* NEXT PROJECT BUTTON*/
+.project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
 .next-project {
     margin-top: 2rem;
     text-align: right;
 }
+.previous-project {
+    margin-top: 2rem;
+    text-align: left;
+}
+.course-overview {
+    margin-top: 2rem;
+    text-align: center;
+}
 
-.next-project a {
+.next-project a,
+.previous-project a,
+.course-overview a {
     display: inline-block;
     padding: 12px 24px;
     background-color: rgb(136, 223, 223);  /* 使用与网站一致的颜色 */
@@ -362,10 +381,26 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;  /* 添加过渡效果 */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* 添加阴影 */
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    display: none;
 }
 
 .next-project a:hover {
     background-color: rgb(96, 183, 183);  /* hover 时的颜色 */
     transform: translateX(5px);  /* hover 时向右移动一点 */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);  /* hover 时阴影加深 */
+}
+.course-overview a:hover {
+    background-color: rgb(96, 183, 183);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);  
+}
+.previous-project a:hover {
+    background-color: rgb(96, 183, 183);
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);  
 }
