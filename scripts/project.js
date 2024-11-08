@@ -3,6 +3,7 @@ class ProjectPageManager {
         this.sidebar = document.querySelector('.sidebar');
         this.content = document.querySelector('.course-content');
         this.toggle = document.querySelector('.sidebar-toggle');
+        this.programmeTitle = document.querySelector('.sidebar-header h1');
         this.mobileBreakpoint = 768;
         
         this.init();
@@ -37,6 +38,15 @@ class ProjectPageManager {
             e.preventDefault();
             this.toggleSidebar();
         });
+
+        this.programmeTitle?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleSidebar();
+        });
+
+        if (this.programmeTitle) {
+            this.programmeTitle.style.cursor = 'pointer';
+        }
         
         // 响应式变化监听
         window.matchMedia(`(max-width: ${this.mobileBreakpoint}px)`)
