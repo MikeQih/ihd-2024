@@ -317,7 +317,9 @@ body {
     overflow: hidden;
     position: relative;
 }
-
+.projects-showcase {
+    margin-top: 2rem
+}
 .pdf-frame {
     width: 100%;
     height: 100%;
