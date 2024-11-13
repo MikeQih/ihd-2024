@@ -156,10 +156,12 @@ body {
 /* SECTIONS */
 section {
     padding-top: 4vh; 
-    height: 96vh;
-    margin: 0 10rem;
+    height: auto;
+    margin: 0;
+    width: 100%;
     box-sizing: border-box; 
     min-height: fit-content;
+    box-sizing: border-box;
 }
 
 
@@ -261,6 +263,7 @@ li {
 .course-container {
     /* max-width: 1200px; */
     max-width: 100%;
+    max-width: none;
     /* margin: 2rem auto; */
     margin: 0%;
     padding: 0 1rem;
@@ -273,17 +276,20 @@ li {
     margin-bottom: 1rem;
     background: white;
     border-radius: 8px;
-    transition: margin-bottom 0.3s ease;
+    /* transition: margin-bottom 0.3s ease; */
 }
 
 .course-info {
     position: relative;
+    width: 100%;
     text-align: center;
     padding: 2rem;
     background-color: rgb(242, 253, 253);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* transition: all 0.3s ease; */
+    transition: box-shadow 0.3s ease;
+    background: linear-gradient(145deg, rgba(136, 223, 223, 0.1), rgba(96, 183, 183, 0.1));
 }
 
 .course-card:not(:hover) {
@@ -296,6 +302,32 @@ li {
     object-fit: cover;
 }
 
+.course-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.course-content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+    /* background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    ); */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .course-info:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -304,6 +336,14 @@ li {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #333;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, .15);
+}
+
+.course-info .course-banner-img {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;    /* 垂直居中 */
+    height: 100%;           /* 设置合适的高度 */
 }
 
 .course-link {
@@ -326,7 +366,7 @@ li {
     background: white;
     padding: 0;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0.4,0,0,0.1);
     opacity: 0;
     max-height: 0;
     visibility: hidden;
@@ -394,7 +434,7 @@ li {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
-    margin-top: 8rem;
+    margin-top: 13rem;
 }
 
 .footer-nav-links {
