@@ -97,14 +97,18 @@ class ProjectPageManager {
     setInitialCourseState() {
         // 获取当前URL路径
         const path = window.location.pathname;
+        console.log('Current URL path:', path);
         // 检查是否是项目页面
         const isProjectPage = path.includes('project');
+        console.log('Is project page:', isProjectPage);
         
         if (isProjectPage) {
             // 从路径中提取课程ID (例如从 'project1_01101.html' 提取 '01101')
-            const courseMatch = path.match(/\/(\d+)\/project\d+_\1\.html$/);
+
+            // const courseMatch = path.match(/\/(\d+)\/project\d+_\1\.html$/);
+            const courseMatch = path.match(/\/(\d+)\/project\d+_\1(?:\.html)?$/);
+
             const courseId = courseMatch ? courseMatch[1] : null;
-            
             if (courseId) {
                 document.querySelectorAll('.course-button.active').forEach(button => {
                     button.classList.remove('active');
@@ -129,10 +133,17 @@ class ProjectPageManager {
                     // 获取项目编号 (例如从 'project1_01101.html' 提取 '1')
                     const projectMatch = path.match(/project(\d+)_/);
                     const projectNumber = projectMatch ? projectMatch[1] : null;
+                    console.log('Project number:', projectNumber);
                     
                     if (projectNumber) {
-                        // 找到并激活对应的项目链接
-                        const projectLink = projectList.querySelector(`a[href$="project${projectNumber}_${courseId}.html"]`);
+                        // Old: 找到并激活对应的项目链接
+                        // const projectLink = projectList.querySelector(`a[href$="project${projectNumber}_${courseId}.html"]`);
+
+                        // New: 考虑两种情况
+                        const projectLinkSelector = `a[href$="project${projectNumber}_${courseId}.html"], a[href$="project${projectNumber}_${courseId}"]`;
+                        const projectLink = projectList.querySelector(projectLinkSelector);
+                        console.log('Found project link:', projectLink);
+
                         if (projectLink) {
                             // 移除其他项目的激活状态
                             projectList.querySelectorAll('a').forEach(link => {

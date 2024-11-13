@@ -104,18 +104,54 @@ class CoursePageManager {
             console.log(`Extracted ID:`, match ? match[1] : null);
         });
 
+        const path = window.location.pathname;
         const currentCourseId = this.getCurrentCourseId();
+        console.log('Processing path:', path);
+        console.log('Current Course ID:', currentCourseId);
+
         if (currentCourseId) {
             const currentButton = document.querySelector(`[aria-controls="projects-${currentCourseId}"]`);
             if (currentButton) {
                 currentButton.setAttribute('aria-expanded', 'true');
                 const projectList = document.getElementById(`projects-${currentCourseId}`);
                 if (projectList) {
+                    // 先移除所有已展开的列表
+                    document.querySelectorAll('.project-list').forEach(list => {
+                        if (list !== projectList) {
+                            list.classList.remove('expanded');
+                        }
+                    });
+                    
+                    // 展开当前列表
                     projectList.classList.add('expanded');
+                    console.log('Expanded project list:', projectList.id);
+
+                    // 处理项目链接的激活状态
+                    if (path.includes('project')) {
+                        const projectMatch = path.match(/project(\d+)_/);
+                        const projectNumber = projectMatch ? projectMatch[1] : null;
+                        
+                        if (projectNumber) {
+                            // 查找并激活当前项目链接
+                            const projectLinkSelector = `a[href$="project${projectNumber}_${currentCourseId}.html"], a[href$="project${projectNumber}_${currentCourseId}"]`;
+                            const projectLink = projectList.querySelector(projectLinkSelector);
+                            console.log('Found project link:', projectLink);
+                            
+                            if (projectLink) {
+                                projectList.querySelectorAll('a').forEach(link => {
+                                    link.classList.remove('active');
+                                });
+                                projectLink.classList.add('active');
+                            }
+                        }
+                    }
                 }
 
                 const courseItem = currentButton.closest('li');
                 if (courseItem) {
+                    document.querySelectorAll('.course-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
                     courseItem.classList.add('active');
                 }
             }
