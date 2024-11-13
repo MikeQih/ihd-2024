@@ -177,7 +177,8 @@ section {
 }
 
 .section__pic-container {
-    max-width: 1200px;
+    max-width: 1400px;
+    /* height: auto; */
     margin: margin-top 0.3s ease; 
 }
 
@@ -188,9 +189,10 @@ section {
 
 .ihd-2024-header-img {
     width: 100%;
-    max-width: 800px;
+    /* max-width: 800px; */
     height: auto;
-    margin-bottom: 30px;
+    border-radius: 5%;
+    /* margin-bottom: 30px; */
     object-fit: contain;
     opacity: 0;
     transform: translateY(-100px);
@@ -325,7 +327,7 @@ li {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: right;
 }
 
 .course-info:hover {
@@ -347,11 +349,15 @@ li {
 }
 
 .course-link {
-    color: rgb(136, 223, 223);
+    /* color: rgb(136, 223, 223); */
+    color: white;
     text-decoration: none;
     display: inline-block;
     margin-top: 1rem;
     transition: color 0.3s ease;
+    position: absolute;
+    left: 20%;
+    top: 8%;
 }
 
 .course-link:hover {
