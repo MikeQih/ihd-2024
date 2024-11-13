@@ -189,13 +189,31 @@ class ProjectPageManager {
         this.setInitialCourseState();
     }
 
+    // Old Version:
+    // getCurrentCourseId() {
+    //     const path = window.location.pathname;
+    //     const match = path.match(/(\d+)/);
+    //     return match ? match[1] : null;
+    // }
+
+    // New Version (Consider Netlify without .html Version)
     getCurrentCourseId() {
         const path = window.location.pathname;
-        // const match = path.match(/(\d+)/);
-        // const match = path.match(/project\d+_(\d+)\.html$/);
-        const match = path.match(/\/(\d+)\/project\d+_\1\.html$/);
-
-        return match ? match[1] : null;
+        console.log('Current path:', path);
+        
+        // 同时匹配两种格式:
+        // 1. /courses/01101.html (本地和 Netlify)
+        // 2. /courses/01101 (Netlify, 无 .html)
+        // 3. /projects/01101/project1_01101.html (本地)
+        // 4. /projects/01101/project1_01101 (Netlify)
+        const courseMatch = path.match(/\/courses\/(\d+)(?:\.html)?$/);
+        const projectMatch = path.match(/\/projects\/(\d+)\/project\d+_\1(?:\.html)?$/);
+        
+        console.log('Course match:', courseMatch);
+        console.log('Project match:', projectMatch);
+        
+        // 返回匹配到的第一个ID
+        return (courseMatch && courseMatch[1]) || (projectMatch && projectMatch[1]) || null;
     }
     
     toggleSidebar() {
