@@ -85,6 +85,25 @@ class CoursePageManager {
     }
 
     setInitialCourseState() {
+
+        console.log('Current URL:', window.location.pathname);
+        console.log('Current Course ID:', this.getCurrentCourseId());
+        console.log('Found Buttons:', document.querySelectorAll('.course-button').length);
+        console.log('LocalStorage State:', localStorage.getItem('sidebarCollapsed'));
+        // 测试不同路径的匹配
+        const testPaths = [
+            '/projects/01101/project1_01101.html',
+            '/projects/01101/project1_01101',
+            '/courses/01101.html'  // 添加课程页面的路径
+        ];
+        console.log('=== Path Matching Tests ===');
+        testPaths.forEach(testPath => {
+            const match = testPath.match(/\/(?:projects\/|courses\/)(\d+)/);
+            console.log(`Test path: ${testPath}`);
+            console.log(`Match result:`, match);
+            console.log(`Extracted ID:`, match ? match[1] : null);
+        });
+
         const currentCourseId = this.getCurrentCourseId();
         if (currentCourseId) {
             const currentButton = document.querySelector(`[aria-controls="projects-${currentCourseId}"]`);
@@ -127,11 +146,33 @@ class CoursePageManager {
         this.setInitialCourseState();
     }
 
+    // Old Version:
+    // getCurrentCourseId() {
+    //     const path = window.location.pathname;
+    //     const match = path.match(/(\d+)/);
+    //     return match ? match[1] : null;
+    // }
+
+    // New Version (Consider Netlify without .html Version)
     getCurrentCourseId() {
         const path = window.location.pathname;
-        const match = path.match(/(\d+)/);
-        return match ? match[1] : null;
+        console.log('Current path:', path);
+        
+        // 同时匹配两种格式:
+        // 1. /courses/01101.html (本地和 Netlify)
+        // 2. /courses/01101 (Netlify, 无 .html)
+        // 3. /projects/01101/project1_01101.html (本地)
+        // 4. /projects/01101/project1_01101 (Netlify)
+        const courseMatch = path.match(/\/courses\/(\d+)(?:\.html)?$/);
+        const projectMatch = path.match(/\/projects\/(\d+)\/project\d+_\1(?:\.html)?$/);
+        
+        console.log('Course match:', courseMatch);
+        console.log('Project match:', projectMatch);
+        
+        // 返回匹配到的第一个ID
+        return (courseMatch && courseMatch[1]) || (projectMatch && projectMatch[1]) || null;
     }
+
     
     toggleSidebar() {
         const isCollapsed = this.sidebar.classList.toggle('collapsed');
