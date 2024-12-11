@@ -378,6 +378,11 @@ body {
     max-height: 400px;
     object-fit: cover;
 }
+.group-photo-special {
+    width: 100%;
+    max-height: 550px;
+    object-fit: cover;
+}
 
 .team-members {
     margin-top: 1rem;
